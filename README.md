@@ -25,7 +25,7 @@ A modern, full-stack fitness tracking and wellness platform built with **Spring 
 ### Backend (`fitness-monolith`)
 - **Language & Framework**: Java 25, Spring Boot 4.x
 - **Data Access & ORM**: Spring Data JPA / Hibernate
-- **Database**: MySQL 8.0
+- **Database**: PostgreSQL
 - **Security**: Spring Security 6 with stateless JWT authentication
 - **Documentation**: OpenAPI 3 / Swagger (`/swagger-ui.html`)
 - **Build Tool**: Apache Maven (Wrapper included)
@@ -89,20 +89,22 @@ befit/
 ### Prerequisites
 - **Java**: JDK 21 or higher (Java 25 recommended)
 - **Node.js**: v18 or higher & npm
-- **Database**: MySQL Server 8.0 running locally on port `3306`
+- **Database**: PostgreSQL database (Local or cloud hosted e.g. Neon, Supabase, Render)
 
 ---
 
 ### 1. Database Setup
 
-Create the database in MySQL:
+Create the database in PostgreSQL:
 ```sql
-CREATE DATABASE IF NOT EXISTS befit_db;
+CREATE DATABASE befit_db;
 ```
 
 Configure your credentials in `fitness-monolith/src/main/resources/application-local.properties` (this file is ignored by Git):
 ```properties
-spring.datasource.password=YOUR_MYSQL_PASSWORD
+spring.datasource.url=jdbc:postgresql://localhost:5432/befit_db
+spring.datasource.username=postgres
+spring.datasource.password=YOUR_POSTGRES_PASSWORD
 jwt.secret=YOUR_BASE64_JWT_SECRET_KEY
 ```
 
