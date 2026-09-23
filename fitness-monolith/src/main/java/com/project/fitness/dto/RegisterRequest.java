@@ -1,0 +1,37 @@
+package com.project.fitness.dto;
+
+import com.project.fitness.model.UserRole;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class RegisterRequest {
+    @NotBlank(message = "Email is required")
+    @Email(message = "Enter a valid email")
+    private String email;
+    @NotBlank(message = "Password can not be empty")
+    private String password;
+    private String firstName;
+    private String lastName;
+
+    @Min(value = 1, message = "Age must be at least 1")
+    @Max(value = 130, message = "Age must be at most 130")
+    private Integer age;
+
+    @DecimalMin(value = "30.0", message = "Height must be at least 30 cm")
+    @DecimalMax(value = "300.0", message = "Height must be at most 300 cm")
+    private Double height;
+
+    @DecimalMin(value = "10.0", message = "Weight must be at least 10 kg")
+    @DecimalMax(value = "500.0", message = "Weight must be at most 500 kg")
+    private Double weight;
+}
