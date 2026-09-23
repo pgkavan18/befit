@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd befit-frontend && npm install && npm run build",
+  "outputDirectory": "befit-frontend/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
