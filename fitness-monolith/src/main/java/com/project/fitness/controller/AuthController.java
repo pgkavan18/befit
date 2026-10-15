@@ -43,20 +43,8 @@ public class AuthController {
 
 
 
-        }catch (AuthenticationException e){
+        } catch (AuthenticationException e) {
             log.error("Login failed for email {}: {}", loginRequest.getEmail(), e.getMessage());
-            return ResponseEntity.status(401).build();
-        }
-    }
-
-    @PostMapping("/oauth2/google")
-    public ResponseEntity<LoginResponse> googleLogin(@Valid @RequestBody com.project.fitness.dto.OAuth2GoogleRequest request) {
-        try {
-            User user = userService.loginOrRegisterGoogleUser(request.getCredential());
-            String token = jwtUtils.generateToken(user.getId(), user.getRole().name());
-            return ResponseEntity.ok(new LoginResponse(token, userService.mapToResponse(user)));
-        } catch (Exception e) {
-            log.error("Google login failed: {}", e.getMessage());
             return ResponseEntity.status(401).build();
         }
     }

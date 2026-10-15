@@ -32,7 +32,6 @@ API.interceptors.response.use(
 // Auth
 export const loginUser = (data) => API.post('/auth/login', data);
 export const registerUser = (data) => API.post('/auth/register', data);
-export const googleLogin = (credential) => API.post('/auth/oauth2/google', { credential });
 
 // Activities
 export const getActivities = () => API.get('/activities');

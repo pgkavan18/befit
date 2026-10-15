@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { loginUser, registerUser, googleLogin } from '../api/api';
+import { loginUser, registerUser } from '../api/api';
 
 const AuthContext = createContext(null);
 
@@ -53,16 +53,6 @@ export const AuthProvider = ({ children }) => {
     return merged;
   };
 
-  const handleGoogleLogin = async (credential) => {
-    const response = await googleLogin(credential);
-    const { token: jwtToken, user: userData } = response.data;
-    localStorage.setItem('befit_token', jwtToken);
-    localStorage.setItem('befit_user', JSON.stringify(userData));
-    setToken(jwtToken);
-    setUser(userData);
-    return userData;
-  };
-
   const logout = () => {
     localStorage.removeItem('befit_token');
     localStorage.removeItem('befit_user');
@@ -80,7 +70,6 @@ export const AuthProvider = ({ children }) => {
         login,
         register,
         updateUser,
-        loginWithGoogle: handleGoogleLogin,
         logout,
       }}
     >

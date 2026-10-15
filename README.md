@@ -16,7 +16,7 @@ A modern, full-stack fitness tracking and wellness platform built with **Spring 
   - Overview metrics: total workouts, cumulative calories, active minutes, and consistency streaks.
   - 7-day activity trend visualization powered by Recharts.
 - **🤖 AI Coaching & Recommendations**: Tailored workout advice, recovery suggestions, and safety improvements.
-- **🔐 Secure Authentication**: Stateless JWT (HMAC-SHA256) authentication with protected routes and Google OAuth2 integration.
+- **🔐 Secure Authentication**: Stateless JWT (HMAC-SHA256) authentication with protected routes.
 
 ---
 
@@ -153,7 +153,6 @@ Open your browser and navigate to: **`http://localhost:3000`**
 | :--- | :--- | :--- | :---: |
 | `POST` | `/api/auth/register` | Register a new athlete account (with optional age, height, weight) | No |
 | `POST` | `/api/auth/login` | Authenticate user & receive JWT token | No |
-| `POST` | `/api/auth/oauth2/google` | Google Single Sign-On | No |
 | `GET` | `/api/users/profile` | Retrieve current authenticated user profile & BMI | Yes |
 | `PUT` | `/api/users/profile` | Update physical metrics (age, height, weight) | Yes |
 | `GET` | `/api/activities` | List all recorded activities for current user | Yes |
